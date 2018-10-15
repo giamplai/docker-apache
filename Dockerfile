@@ -9,8 +9,8 @@ RUN mkdir /usr/local/apache2/conf/ssl
 RUN mkdir -p /var/www/logs/
 RUN openssl req -new -x509 -nodes -out /usr/local/apache2/conf/ssl/server.pem -keyout /usr/local/apache2/conf/ssl/server.key -days 3650 -subj '/CN=localhost'
 
-COPY apache.conf /usr/local/apache2/conf/apache.conf
+COPY ./apache.conf /usr/local/apache2/conf/apache.conf
 
-ENV SERVERNAME localhost
+# ENV SERVERNAME localhost
 
 RUN echo "Include /usr/local/apache2/conf/apache.conf" >> /usr/local/apache2/conf/httpd.conf
