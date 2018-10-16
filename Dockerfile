@@ -1,4 +1,5 @@
 FROM httpd:2.4.32-alpine
+MAINTAINER Giampiero Lai <giampiero.lai@gmail.com>
 
 RUN apk update \ 
     && apk add --no-cache openssh-client unzip curl bison git openssl \
@@ -14,3 +15,10 @@ COPY ./apache.conf /usr/local/apache2/conf/apache.conf
 # ENV SERVERNAME localhost
 
 RUN echo "Include /usr/local/apache2/conf/apache.conf" >> /usr/local/apache2/conf/httpd.conf
+
+EXPOSE 8080
+EXPOSE 4430
+
+# Default env vars for httpd. You can override these at runtime if you want to
+ENV SERVERNAME localhost
+ENV ADMINEMAIL root@localhost
