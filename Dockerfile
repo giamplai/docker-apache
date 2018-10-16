@@ -6,7 +6,7 @@ RUN apk update \
 
 # Copy apache vhost file to proxy php requests to php-fpm container
 RUN mkdir /usr/local/apache2/conf/ssl
-RUN mkdir -p /var/www/logs/
+RUN mkdir -p /logs/
 RUN openssl req -new -x509 -nodes -out /usr/local/apache2/conf/ssl/server.pem -keyout /usr/local/apache2/conf/ssl/server.key -days 3650 -subj '/CN=localhost'
 
 COPY ./apache.conf /usr/local/apache2/conf/apache.conf
